@@ -1,0 +1,100 @@
+<!-- {{ form.value | json }} -->
+<!-- {{ hobbies | json }} -->
+<form [formGroup]="form" class="grid gap-x-11 grid-cols-9">
+  <app-input class="col-span-3" formControlName="firstName">
+    first name
+  </app-input>
+  <app-input class="col-span-3" formControlName="lastName">
+    last name
+  </app-input>
+  <app-input class="col-span-3" formControlName="email"> email </app-input>
+
+  <app-input class="col-span-3" formControlName="phone"> phone </app-input>
+  <app-input class="col-span-6" formControlName="phone"> address </app-input>
+
+  <app-input class="col-span-3" formControlName="city"> city </app-input>
+  <app-input class="col-span-3" formControlName="state"> state </app-input>
+  <app-input class="col-span-3" formControlName="country"> country </app-input>
+
+  <app-input class="col-span-3" formControlName="birthday" type="date">
+    birthday
+  </app-input>
+  <div class="col-span-2 flex flex-col justify-between gap-0">
+    <label for="">Gender</label>
+    <span class="flex w-full justify-between">
+      <label>
+        <input type="radio" formControlName="gender" value="male" />
+        Male</label
+      >
+      <label>
+        <input type="radio" formControlName="gender" value="female" />
+        Female</label
+      >
+
+      <!-- <p-radioButton
+        name="Male"
+        value="male"
+        formControlName="gender"
+      ></p-radioButton>
+      <p-radioButton
+        name="Female"
+        value="female"
+        formControlName="gender"
+      ></p-radioButton> -->
+    </span>
+  </div>
+  <div class="col-span-4 flex flex-col justify-between gap-0">
+    <label for="">Hobbies</label>
+    <span class="flex w-full justify-between">
+      <label *ngFor="let item of hobbies">
+        <!-- formControlName="hobbies" -->
+        <input
+          type="checkbox"
+          [value]="item.value"
+          [checked]="item.checked"
+          #ip
+          (click)="setHobbies(ip)"
+        />
+        {{ item.value }}</label
+      >
+    </span>
+  </div>
+
+  <div
+    formArrayName="specialization"
+    class="col-span-9 grid gap-x-11 grid-cols-9"
+  >
+    <div
+      *ngFor="let subHead of $any(specialization).controls; let i = index"
+      [formGroupName]="i"
+      class="col-span-9 w-full flex justify-between align-middle"
+    >
+      <app-input
+        class="col-span-3 w-auto flex justify-center items-center"
+        formControlName="name"
+      >
+        Subject Name
+      </app-input>
+      <app-button class="!pt-5" (click)="removeSpecialization(i)">
+        Delete Specialization
+      </app-button>
+    </div>
+    <div class="col-start-4 col-end-7 grid gap-x-11 grid-cols-3 items-center">
+      <app-input class="col-span-1"> topic name </app-input>
+      <app-input class="col-span-1"> grades </app-input>
+      <app-button class="col-span-1"> Delete Topic </app-button>
+    </div>
+    <div class="col-start-4 col-end-7 grid gap-x-11 grid-cols-3 items-center">
+      <app-button class="col-span-1"> Add Topic </app-button>
+    </div>
+    <div class="col-span-9 w-full flex justify-between align-middle">
+      <app-button class="col-span-1" (click)="addSpecialization()">
+        Add Specialization
+      </app-button>
+    </div>
+  </div>
+
+  <div class="col-span-9 w-full flex justify-center align-middle">
+    <app-button class="col-span-1" (click)="submit()"> Save </app-button>
+  </div>
+</form>

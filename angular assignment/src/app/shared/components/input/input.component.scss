@@ -1,0 +1,15 @@
+:host ::ng-deep{
+  width: 100%;
+  display: block;
+  label{
+    font-size: 1.2rem;
+    margin-bottom: 0;
+
+  }
+  .p-inputtext{
+    background-color: var(--secondary-2);
+    border: 1px solid #828282;
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,8 @@
+.main{
+  background-color: var(--background);
+  padding: 1.3rem;
+  &__container{
+    background-color: var(--surface);
+    padding: 1.2rem;
+  }
+}

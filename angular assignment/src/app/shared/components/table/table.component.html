@@ -1,0 +1,59 @@
+<p-table
+  #dt
+  [value]="rowData"
+  [globalFilterFields]="filters"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [showCurrentPageReport]="true"
+>
+  <ng-template pTemplate="caption">
+    <div class="table-header">
+      <!-- <span class="p-input-icon-left p-ml-auto"> -->
+      <input
+        class="table-header__search-bar text-[#000]"
+        pInputText
+        type="text"
+        (input)="dt.filterGlobal($any($event.target)?.value, 'contains')"
+        placeholder="Search students by name"
+      />
+      <div class="table-header__btns">
+        <app-button  routerLink="/student/list"> Add New </app-button>
+        <app-button (click)="exportExcel()" pTooltip="Excel">
+          Export
+        </app-button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of cols">
+        {{ col.header }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData>
+    <ng-container
+      [ngTemplateOutlet]="bodyRef ? bodyRef : defaultBody"
+      [ngTemplateOutletContext]="{ $implicit: rowData }"
+    ></ng-container>
+  </ng-template>
+
+  <!-- <ng-template pTemplate="paginatorright">
+  </ng-template>
+  <ng-template let-item pTemplate="paginatordropdownitem">
+    {{ item.value }} - per page
+  </ng-template> -->
+</p-table>
+
+<ng-template #defaultBody let-rowData>
+  <tr>
+    <td *ngFor="let col of cols">
+      <div [ngSwitch]="col.field">
+        <div *ngSwitchCase="'name'">output</div>
+        <div *ngSwitchDefault>output2</div>
+      </div>
+      {{ rowData[col.field] }}
+    </td>
+  </tr>
+</ng-template>

@@ -1,0 +1,14 @@
+.header{
+  background-color: var(--primary-1);
+  // background-color: red;
+  padding: 1.2rem;
+  &__heading{
+    line-height: normal;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    color: var(--on-primary);
+  }
+}
+

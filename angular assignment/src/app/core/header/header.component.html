@@ -1,0 +1,9 @@
+<header class="header relative">
+  <h1 class="header__heading container">
+    {{ (ar.firstChild?.data | async)?.['pageName'] ?? '' }}
+  </h1>
+  <div class="absolute left-0 top-0 flex flex-col pl-2">
+    <a class="cursor-pointer" routerLink="/student/form">add</a>
+    <a class="cursor-pointer" routerLink="/student/list">list</a>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+<div class="field">
+  <label for="username1" class="block capitalize">
+    <ng-content></ng-content>
+  </label>
+  <input
+    #data="ngModel"
+    [(ngModel)]="value"
+    id="username1"
+    [type]="type"
+    pInputText
+    (input)="setValue(data.value)"
+  />
+
+</div>

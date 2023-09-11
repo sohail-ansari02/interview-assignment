@@ -1,0 +1,14 @@
+<app-table
+  [filters]="['firstName', 'lastName']"
+  [bodyRef]="tableBody"
+  [cols]="cols"
+  [rowData]="rowData"
+></app-table>
+<app-button> Edit </app-button>
+<ng-template #tableBody let-rowData>
+  <tr>
+    <td *ngFor="let col of cols">
+      {{ rowData[col.field] }}
+    </td>
+  </tr>
+</ng-template>
